@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 ruby '2.2.0'
 
 gem 'sidekiq',                '~> 3.3.2'
-gem 'sidekiq-cron',           '~> 0.2.0'
 gem 'thin',                   '~> 1.6.3'
 gem 'sinatra',                '~> 1.4.5'
 gem 'rake',                   '~> 10.4.2'
