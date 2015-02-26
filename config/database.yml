@@ -1,0 +1,22 @@
+# development: postgres://localhost/aa-web_development
+# test: postgres://localhost/aa-web_test
+# production: <%= ENV['DATABASE_URL'] %>
+#
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: 5
+
+development:
+  <<: *default
+  database: leave_at_development
+
+test:
+  <<: *default
+  database: leave_at_test
+
+production:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>

@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://dev.virtualearth.net/REST/v1/Routes/Driving?du=mi&key=AtCxL_gs0MflEjjtPqyUn4D9orxe3jCFho3Gwrg8n7TZVBQaBUpORhD722Hmhu1I&optmz=timeWithTraffic&ra=routeSummariesOnly
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Cache-Control:
+      - no-cache
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.0
+      X-Bm-Traceid:
+      - 0f868377929c40aeb874365e45e6f205
+      X-Bm-Srv:
+      - CO30276241
+      X-Ms-Bm-Ws-Info:
+      - '0'
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Sun, 22 Feb 2015 07:35:40 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJhdXRoZW50aWNhdGlvblJlc3VsdENvZGUiOiJWYWxpZENyZWRlbnRpYWxz
+        IiwiYnJhbmRMb2dvVXJpIjoiaHR0cDpcL1wvZGV2LnZpcnR1YWxlYXJ0aC5u
+        ZXRcL0JyYW5kaW5nXC9sb2dvX3Bvd2VyZWRfYnkucG5nIiwiY29weXJpZ2h0
+        IjoiQ29weXJpZ2h0IMKpIDIwMTUgTWljcm9zb2Z0IGFuZCBpdHMgc3VwcGxp
+        ZXJzLiBBbGwgcmlnaHRzIHJlc2VydmVkLiBUaGlzIEFQSSBjYW5ub3QgYmUg
+        YWNjZXNzZWQgYW5kIHRoZSBjb250ZW50IGFuZCBhbnkgcmVzdWx0cyBtYXkg
+        bm90IGJlIHVzZWQsIHJlcHJvZHVjZWQgb3IgdHJhbnNtaXR0ZWQgaW4gYW55
+        IG1hbm5lciB3aXRob3V0IGV4cHJlc3Mgd3JpdHRlbiBwZXJtaXNzaW9uIGZy
+        b20gTWljcm9zb2Z0IENvcnBvcmF0aW9uLiIsImVycm9yRGV0YWlscyI6WyJP
+        bmUgb3IgbW9yZSBwYXJhbWV0ZXJzIGFyZSBub3QgdmFsaWQuIiwid2F5cG9p
+        bnQ6IFBhcmFtZXRlciBpcyBtaXNzaW5nIl0sInJlc291cmNlU2V0cyI6W10s
+        InN0YXR1c0NvZGUiOjQwMCwic3RhdHVzRGVzY3JpcHRpb24iOiJCYWQgUmVx
+        dWVzdCIsInRyYWNlSWQiOiIwZjg2ODM3NzkyOWM0MGFlYjg3NDM2NWU0NWU2
+        ZjIwNXxDTzMwMjc2MjQxfDAyLjAwLjEzMC4yMDB8In0=
+    http_version: 
+  recorded_at: Sun, 22 Feb 2015 07:35:41 GMT
+recorded_with: VCR 2.9.3

@@ -1,0 +1,73 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://dev.virtualearth.net/REST/v1/Routes/Driving?du=mi&key=AtCxL_gs0MflEjjtPqyUn4D9orxe3jCFho3Gwrg8n7TZVBQaBUpORhD722Hmhu1I&optmz=timeWithTraffic&ra=routeSummariesOnly&wp.1=El%20Monte,%20CA&wp.2=Culver%20City,%20CA
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/8.0
+      X-Bm-Traceid:
+      - 07ffa07066f54a08a2d4611873e9112e
+      X-Bm-Srv:
+      - CO30276302, CO3SCH010265115, CO3SCH010265515, CO3SCH010265204, CO3SCH010264907,
+        CO3SCH010273823, CO3SCH010265208, CO30274034, CO30265130
+      X-Ms-Bm-Ws-Info:
+      - '0'
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Sun, 22 Feb 2015 07:35:40 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJhdXRoZW50aWNhdGlvblJlc3VsdENvZGUiOiJWYWxpZENyZWRlbnRpYWxz
+        IiwiYnJhbmRMb2dvVXJpIjoiaHR0cDpcL1wvZGV2LnZpcnR1YWxlYXJ0aC5u
+        ZXRcL0JyYW5kaW5nXC9sb2dvX3Bvd2VyZWRfYnkucG5nIiwiY29weXJpZ2h0
+        IjoiQ29weXJpZ2h0IMKpIDIwMTUgTWljcm9zb2Z0IGFuZCBpdHMgc3VwcGxp
+        ZXJzLiBBbGwgcmlnaHRzIHJlc2VydmVkLiBUaGlzIEFQSSBjYW5ub3QgYmUg
+        YWNjZXNzZWQgYW5kIHRoZSBjb250ZW50IGFuZCBhbnkgcmVzdWx0cyBtYXkg
+        bm90IGJlIHVzZWQsIHJlcHJvZHVjZWQgb3IgdHJhbnNtaXR0ZWQgaW4gYW55
+        IG1hbm5lciB3aXRob3V0IGV4cHJlc3Mgd3JpdHRlbiBwZXJtaXNzaW9uIGZy
+        b20gTWljcm9zb2Z0IENvcnBvcmF0aW9uLiIsInJlc291cmNlU2V0cyI6W3si
+        ZXN0aW1hdGVkVG90YWwiOjEsInJlc291cmNlcyI6W3siX190eXBlIjoiUm91
+        dGU6aHR0cDpcL1wvc2NoZW1hcy5taWNyb3NvZnQuY29tXC9zZWFyY2hcL2xv
+        Y2FsXC93c1wvcmVzdFwvdjEiLCJpZCI6InY2NSxoMTI4MTY4MSxpMCxhMCxj
+        ZW4tVVMsZEFBQUFBQUFBQUFBMSx5MCxzMSxtMSxvMSx0MCx3MzBzSEF6NG5n
+        dlUxfkFocVdXc3RCMFIwR0FBRGdBWi1RQUQ4QTB+Uld3Z1RXOXVkR1VzSUVO
+        QjB+fn4sd1BpNEdBeGJVZWZVMX5BaHFXV3N0UlFic0ZBQURnQVF6X196NEEw
+        flEzVnNkbVZ5SUVOcGRIa3NJRU5CMH5+fixrMCIsImRpc3RhbmNlVW5pdCI6
+        Ik1pbGUiLCJkdXJhdGlvblVuaXQiOiJTZWNvbmQiLCJ0cmF2ZWxEaXN0YW5j
+        ZSI6MjQuMjk0MzcxLCJ0cmF2ZWxEdXJhdGlvbiI6MTcyNiwidHJhdmVsRHVy
+        YXRpb25UcmFmZmljIjoxOTc1fV19XSwic3RhdHVzQ29kZSI6MjAwLCJzdGF0
+        dXNEZXNjcmlwdGlvbiI6Ik9LIiwidHJhY2VJZCI6IjA3ZmZhMDcwNjZmNTRh
+        MDhhMmQ0NjExODczZTkxMTJlfENPMzAyNzYzMDJ8MDIuMDAuMTMwLjIwMHxD
+        TzNTQ0gwMTAyNjUxMTUsIENPM1NDSDAxMDI2NTUxNSwgQ08zU0NIMDEwMjY1
+        MjA0LCBDTzNTQ0gwMTAyNjQ5MDcsIENPM1NDSDAxMDI3MzgyMywgQ08zU0NI
+        MDEwMjY1MjA4LCBDTzMwMjc0MDM0LCBDTzMwMjY1MTMwIn0=
+    http_version: 
+  recorded_at: Sun, 22 Feb 2015 07:35:41 GMT
+recorded_with: VCR 2.9.3
