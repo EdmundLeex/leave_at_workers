@@ -1,10 +1,11 @@
 require 'sidekiq'
 
 before_fork do |server, worker|
-   @sidekiq_pid ||= spawn("bundle exec sidekiq -c 2 -r ./app.rb -e production")
+   @sidekiq_pid ||= spawn("bundle exec sidekiq -c 6 -r ./app.rb -e production")
 end
 
-worker_processes 3
+worker_processes 1
+
 after_fork do |server, worker|
   Sidekiq.configure_client do |config|
     config.redis = { :size => 1 }
