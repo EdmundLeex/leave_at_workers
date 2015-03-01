@@ -4,6 +4,7 @@
 #############################
 require 'open-uri'
 require 'dotenv'
+require 'chronic_duration'
 
 Dotenv.load
 
@@ -13,7 +14,6 @@ module MapClients
     attr_reader :json
 
     attr_reader :status_code
-    attr_reader :errors
 
     attr_reader :distance
     attr_reader :duration
@@ -25,26 +25,30 @@ module MapClients
     end
 
     def retrieve_direction(options = {})
-      options[:key] = @api_key
+      options['key'] = @api_key
 
-      options[:ra] = 'routeSummariesOnly' # route attributes
-      options[:optmz] = 'timeWithTraffic' # optimize
-      options[:du] = 'mi' # distance unit
+      options['ra'] = 'routeSummariesOnly' # route attributes
+      options['optmz'] = 'timeWithTraffic' # optimize
+      options['du'] = 'mi' # distance unit
 
-      url = @base_url + '?' + options.rename_keys(key_mappings).to_query
+      @origin = options['wp.1'] = options.delete :origin
+      @destination = options['wp.2'] = options.delete :destination
 
+      url = @base_url + '?' + options.compact.to_query
       @raw_response = open(url).read
+
       parse_response
-    rescue OpenURI::HTTPError => e
-      @errors = e.message
+    end
+
+    def to_h
+      { origin: @origin,
+        destination: @destination,
+        duration: ChronicDuration.output(@duration),
+        duration_with_traffic: ChronicDuration.output(@duration_with_traffic),
+        distance: "#{@distance} miles" }
     end
 
   private
-
-    def key_mappings
-      { origin: 'wp.1',
-        destination: 'wp.2' }
-    end
 
     def parse_response
       @json = JSON.parse(@raw_response)

@@ -24,10 +24,10 @@ class BingMapsClientTest < Minitest::Test
   end
 
   def test_retrieve_direction_fail
-    VCR.use_cassette('bing_maps_client_fail') do
-      @client.retrieve_direction
+    assert_raises OpenURI::HTTPError do
+      VCR.use_cassette('bing_maps_client_fail') do
+        @client.retrieve_direction
+      end
     end
-
-    refute_nil @client.errors
   end
 end
