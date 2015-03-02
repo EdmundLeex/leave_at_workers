@@ -1,13 +1,26 @@
 # encoding: UTF-8
 
 require 'active_record'
-require 'pp'
 
 #############################
 # models/reminder.rb
 #############################
 module Models
   class Reminder < ActiveRecord::Base
+
+    def finish(options = {})
+      options[:arrival_time] = arrival_time.localtime
+      options[:email] = email
+
+      Mailer.reminder_email(options)
+
+      if new_arrival = calculate_repeat
+        update(arrival_time: new_arrival)
+      else
+        update(is_finished: true)
+      end
+    end
+
     def self.active
       where('arrival_time <= ?', Time.now + 3.hours).where(is_finished: false)
     end
@@ -16,13 +29,11 @@ module Models
       find_by(id: id)
     end
 
-    def finish(options = {})
-      update(is_finished: true)
+  private
 
-pp "arrival_time: #{arrival_time.localtime}"
-pp "time now: #{Time.now}"
-pp options
-      # send_email
+    def calculate_repeat
+      repeat ? arrival_time + 1.day : nil
     end
+
   end
 end
