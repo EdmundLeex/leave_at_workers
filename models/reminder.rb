@@ -21,8 +21,8 @@ module Models
       end
     end
 
-    def self.active
-      where('arrival_time <= ?', Time.now + 3.hours).where(is_finished: false)
+    def self.active_for(interval)
+      where('arrival_time <= ?', Time.now + interval).where(is_finished: false)
     end
 
     def self.fetch(id)

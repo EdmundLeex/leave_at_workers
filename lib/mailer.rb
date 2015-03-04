@@ -1,4 +1,5 @@
 require 'pony'
+require 'chronic_duration'
 
 class Mailer
   class << self
@@ -8,14 +9,14 @@ class Mailer
       subject = "Leave at #{options.leave_at.strftime(time_format)} for your trip to #{options.destination}"
 
       body = ''
-      body = "to: #{options.destination} \n"
-      body += "from: #{options.origin} \n\n"
+      body = "#{options.origin} => #{options.destination} \n\n"
 
       body += "leave at: #{options.leave_at.strftime(time_format)} \n"
       body += "arrive at: #{options.arrival_time.strftime(time_format)} \n\n"
 
-      body += "with traffic: #{options.duration_with_traffic}\n"
-      body += "without traffic: #{options.duration}"
+
+      body += "with traffic: #{ChronicDuration.output(options.duration_with_traffic)}\n"
+      body += "without traffic: #{ChronicDuration.output(options.duration)}"
 
       mail(to: options.email, body: body, subject: subject)
     end

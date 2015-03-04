@@ -4,7 +4,6 @@
 #############################
 require 'open-uri'
 require 'dotenv'
-require 'chronic_duration'
 
 Dotenv.load
 
@@ -43,9 +42,9 @@ module MapClients
     def to_h
       { origin: @origin,
         destination: @destination,
-        duration: ChronicDuration.output(@duration),
-        duration_with_traffic: ChronicDuration.output(@duration_with_traffic),
-        distance: "#{@distance} miles" }
+        duration: @duration,
+        duration_with_traffic: @duration_with_traffic,
+        distance: @distance }
     end
 
   private

@@ -6,7 +6,7 @@ module Workers
     include Sidekiq::Worker
 
     def perform
-      reminders = Models::Reminder.active.select :id
+      reminders = Models::Reminder.active_for(3.hours).select :id
       reminders.each { |r| Processer.perform_async(reminder_id: r.id) }
 
       self.class.perform_in 30.minutes
