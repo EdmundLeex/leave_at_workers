@@ -33,7 +33,7 @@ module MapClients
       @origin = options['wp.1'] = options.delete :origin
       @destination = options['wp.2'] = options.delete :destination
 
-      url = @base_url + '?' + options.compact.to_query
+      url = @base_url + '?' + options.compact.collect { |k,v| "#{k}=#{v}" }.join("&")
       @raw_response = open(url).read
 
       parse_response

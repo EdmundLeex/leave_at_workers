@@ -1,5 +1,6 @@
 require 'pony'
 require 'chronic_duration'
+require 'hashie'
 
 class Mailer
   class << self
@@ -24,7 +25,7 @@ class Mailer
   private
 
     def mail(options = {})
-      options.symbolize_keys!
+      Hashie.symbolize_keys! options
 
       options[:via] = :smtp
       options[:via_options] = mailing_options

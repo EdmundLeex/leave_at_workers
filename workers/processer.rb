@@ -1,4 +1,6 @@
 require 'sidekiq'
+require 'hashie'
+
 require_relative '../app'
 
 module Workers
@@ -8,7 +10,7 @@ module Workers
     LEAD_WAY = 2700
 
     def perform(options = {})
-      options.symbolize_keys!
+      Hashie.symbolize_keys! options
 
       @reminder = LeaveAtAPIClient.get(:reminders, options[:reminder_id])
       return unless @reminder

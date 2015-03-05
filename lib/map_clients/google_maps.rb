@@ -23,7 +23,7 @@ module MapClients
 
     def retrieve_direction(options = {})
       options[:key] = @api_key
-      url = @base_url + '?' + options.to_query
+      url = @base_url + '?' + options.compact.collect { |k,v| "#{k}=#{v}" }.join("&")
 
       @raw_response = open(url).read
 
