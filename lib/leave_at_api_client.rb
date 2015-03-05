@@ -3,9 +3,12 @@
 # lib/map_clients/api_client.rb
 #############################
 require 'rest-client'
+require 'dotenv'
+
+Dotenv.load
 
 class LeaveAtAPIClient
-  BASE_URL = 'http://localhost:9292/api/'
+  BASE_URL = ENV['LEAVE_AT_API_URL'] || 'http://localhost:9292/api/'
 
   class << self
     def get(resource, id = nil)
