@@ -9,7 +9,7 @@ module Workers
       reminders = LeaveAtAPIClient.get(:reminders)
       reminders.each { |r| Processer.perform_async(reminder_id: r.id) }
 
-      self.class.perform_in 20.minutes
+      self.class.perform_in 1200
     end
   end
 end

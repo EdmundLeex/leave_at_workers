@@ -5,7 +5,7 @@ module Workers
   class Processer
     include Sidekiq::Worker
 
-    LEAD_WAY = 45.minutes
+    LEAD_WAY = 2700
 
     def perform(options = {})
       options.symbolize_keys!
@@ -44,7 +44,7 @@ module Workers
     end
 
      def calculate_repeat
-        @reminder.repeat ? @arrival_time + 1.day : nil
+        @reminder.repeat ? @arrival_time + 86400 : nil
      end
   end
 end
