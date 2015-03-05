@@ -6,10 +6,10 @@ module Workers
     include Sidekiq::Worker
 
     def perform
-      reminders = Models::Reminder.active_for(3.hours).select :id
+      reminders = LeaveAtAPIClient.get(:reminders)
       reminders.each { |r| Processer.perform_async(reminder_id: r.id) }
 
-      self.class.perform_in 30.minutes
+      self.class.perform_in 20.minutes
     end
   end
 end

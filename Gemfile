@@ -13,7 +13,8 @@ gem 'pg',                     '~> 0.18.1'
 gem 'hashie',                 '~> 3.3.1'
 gem 'require_all',            '~> 1.3.2'
 gem 'chronic_duration',       '~> 0.10.6'
-gem 'pony'
+gem 'pony',                   '~> 1.11'
+gem 'rest-client',            '~> 1.7.2'
 
 group :test do
   gem 'rack-test'
