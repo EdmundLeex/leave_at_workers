@@ -10,7 +10,7 @@ module Workers
     LEAD_WAY = 2700
 
     def perform(options = {})
-      Hashie.symbolize_keys! options
+      options.symbolize_keys!
 
       @reminder = LeaveAtAPIClient.get(:reminders, options[:reminder_id])
       return unless @reminder
@@ -32,9 +32,9 @@ module Workers
     def finish
       mailer_options = @client.to_h
 
-      mailer_options[:arrival_time] = @arrival_time.localtime
+      mailer_options[:arrival_time] = @arrival_time.localtime('-08:00')
       mailer_options[:email] = @reminder.email
-      mailer_options[:leave_at] = @leave_at.localtime
+      mailer_options[:leave_at] = @leave_at.localtime('-08:00')
 
       Mailer.reminder_email(mailer_options)
 

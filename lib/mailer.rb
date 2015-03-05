@@ -25,7 +25,7 @@ class Mailer
   private
 
     def mail(options = {})
-      Hashie.symbolize_keys! options
+      options.symbolize_keys!
 
       options[:via] = :smtp
       options[:via_options] = mailing_options

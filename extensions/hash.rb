@@ -7,6 +7,7 @@ require 'hashie'
 
 class Hash
   include Hashie::Extensions::MethodAccess
+  include Hashie::Extensions::SymbolizeKeys
 
   def compact
     reject { |_, v| v.nil? }
