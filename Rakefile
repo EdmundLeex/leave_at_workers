@@ -1,11 +1,3 @@
-require "sinatra/activerecord/rake"
-
-namespace :db do
-  task :load_config do
-    require "./app"
-  end
-end
-
 namespace :test do
   desc 'Run all the tests'
   task :all do
