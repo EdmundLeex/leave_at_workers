@@ -12,12 +12,12 @@ module Workers
     def perform(options = {})
       options.symbolize_keys!
 
-      @reminder = ApiClients::LeaveAt.new.get(:reminders, options[:reminder_id])
+      @reminder = ApiClients::LeaveAt.new.get :reminders, options[:reminder_id]
       return unless @reminder
 
       @client = ApiClients::BingMaps.new
-      @client.retrieve_direction(origin: @reminder.origin,
-                                 destination: @reminder.destination)
+      @client.retrieve_direction origin: @reminder.origin,
+                                 destination: @reminder.destination
 
       return unless @client.duration_with_traffic
 
@@ -30,23 +30,30 @@ module Workers
   private
 
     def finish
-      mailer_options = @client.to_h
+      params = if new_arrival = calculate_repeat
+                 { arrival_time: new_arrival }
+               else
+                 { is_finished: true }
+               end
 
-      mailer_options[:arrival_time] = @arrival_time.localtime('-08:00')
-      mailer_options[:email] = @reminder.email
-      mailer_options[:leave_at] = @leave_at.localtime('-08:00')
+      ApiClients::LeaveAt.new.update(:reminders, @reminder.id, params)
 
-      Mailer.reminder_email(mailer_options)
-
-      if new_arrival = calculate_repeat
-        ApiClients::LeaveAt.new.update(:reminders, @reminder.id, arrival_time: new_arrival)
-      else
-        ApiClients::LeaveAt.new.update(:reminders, @reminder.id, is_finished: true)
-      end
+      send_email if @reminder.email
     end
 
-     def calculate_repeat
-        @reminder.repeat ? @arrival_time + 86400 : nil
-     end
+    def send_email
+      offset = '-08:00'
+      mailer_options = @client.to_h
+
+      mailer_options[:arrival_time] = @arrival_time.localtime offset
+      mailer_options[:email] = @reminder.email
+      mailer_options[:leave_at] = @leave_at.localtime offset
+
+      Mailer.reminder_email(mailer_options)
+    end
+
+    def calculate_repeat
+      @reminder.repeat ? @arrival_time + 86400 : nil
+    end
   end
 end
