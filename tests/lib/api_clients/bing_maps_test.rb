@@ -1,18 +1,18 @@
 #############################
-# tests/bing_maps_client_test.rb
+# tests/lib/api_clients/bing_maps_test.rb
 #############################
-require_relative '../test_helper'
+require_relative '../../test_helper'
 
-class BingMapsClientTest < Minitest::Test
+class ApiClients::BingMapsTest < Minitest::Test
   def setup
-    @client = MapClients::BingMaps.new
+    @client = ApiClients::BingMaps.new
   end
 
   def test_retrieve_direction_success
     options = { origin: 'El Monte, CA',
                 destination: 'Culver City, CA' }
 
-    VCR.use_cassette('bing_maps_client_success') do
+    VCR.use_cassette('/bing_maps/success') do
       @client.retrieve_direction(options)
     end
 
@@ -25,7 +25,7 @@ class BingMapsClientTest < Minitest::Test
 
   def test_retrieve_direction_fail
     assert_raises OpenURI::HTTPError do
-      VCR.use_cassette('bing_maps_client_fail') do
+      VCR.use_cassette('/bing_maps/fail') do
         @client.retrieve_direction
       end
     end

@@ -1,14 +1,11 @@
 # encoding: UTF-8
 #############################
-# lib/map_clients/bing_maps.rb
+# lib/api_clients/bing_maps.rb
 #############################
 require 'open-uri'
-require 'dotenv'
 
-Dotenv.load
-
-module MapClients
-  class BingMaps
+module ApiClients
+  class BingMaps < Base
     attr_reader :raw_response
     attr_reader :json
 
@@ -19,6 +16,8 @@ module MapClients
     attr_reader :duration_with_traffic
 
     def initialize
+      super
+
       @api_key = ENV['BING_MAPS_API_KEY']
       @base_url = 'https://dev.virtualearth.net/REST/v1/Routes/Driving'
     end

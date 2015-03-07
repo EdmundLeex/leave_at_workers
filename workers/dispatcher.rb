@@ -6,7 +6,7 @@ module Workers
     include Sidekiq::Worker
 
     def perform
-      reminders = LeaveAtAPIClient.get(:reminders)
+      reminders = ApiClients::LeaveAt.new.get(:reminders)
       reminders.each { |r| Processer.perform_async(reminder_id: r.id) }
 
       self.class.perform_in 1200

@@ -12,10 +12,10 @@ module Workers
     def perform(options = {})
       options.symbolize_keys!
 
-      @reminder = LeaveAtAPIClient.get(:reminders, options[:reminder_id])
+      @reminder = ApiClients::LeaveAt.new.get(:reminders, options[:reminder_id])
       return unless @reminder
 
-      @client = MapClients::BingMaps.new
+      @client = ApiClients::BingMaps.new
       @client.retrieve_direction(origin: @reminder.origin,
                                  destination: @reminder.destination)
 
@@ -39,9 +39,9 @@ module Workers
       Mailer.reminder_email(mailer_options)
 
       if new_arrival = calculate_repeat
-        LeaveAtAPIClient.update(:reminders, @reminder.id, arrival_time: new_arrival)
+        ApiClients::LeaveAt.new.update(:reminders, @reminder.id, arrival_time: new_arrival)
       else
-        LeaveAtAPIClient.update(:reminders, @reminder.id, is_finished: true)
+        ApiClients::LeaveAt.new.update(:reminders, @reminder.id, is_finished: true)
       end
     end
 
