@@ -1,6 +1,5 @@
 require 'pony'
 require 'chronic_duration'
-require 'hashie'
 
 class Mailer
   class << self

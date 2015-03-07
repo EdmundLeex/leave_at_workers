@@ -1,5 +1,4 @@
 require 'sidekiq'
-require 'hashie'
 
 require_relative '../app'
 
