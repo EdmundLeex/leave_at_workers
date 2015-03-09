@@ -2,6 +2,11 @@
 
 Sidekiq workers for leave_at
 
+### Requirements
+- redis `brew install redis`
+- sidekiq gem [https://github.com/mperham/sidekiq]
+- `.env` file in root directory
+
 ### Sample .env file
 - BING_MAPS_API_KEY=somekey
 - GMAIL_USERNAME=some_email
