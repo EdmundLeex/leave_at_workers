@@ -13,7 +13,6 @@ GEM
     hashie (3.3.2)
     hitimes (1.2.2)
     json (1.8.2)
-    kgio (2.9.3)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     mime-types (2.4.3)
@@ -27,7 +26,6 @@ GEM
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
-    raindrops (0.13.0)
     rake (10.4.2)
     redis (3.2.1)
     redis-namespace (1.5.1)
@@ -50,10 +48,6 @@ GEM
     tilt (1.4.1)
     timers (4.0.1)
       hitimes
-    unicorn (4.8.3)
-      kgio (~> 2.6)
-      rack
-      raindrops (~> 0.7)
     vcr (2.9.3)
     webmock (1.20.4)
       addressable (>= 2.3.6)
@@ -74,6 +68,5 @@ DEPENDENCIES
   rest-client (~> 1.7.2)
   sidekiq (~> 3.3.2)
   sinatra (~> 1.4.5)
-  unicorn (~> 4.8.3)
   vcr
   webmock
