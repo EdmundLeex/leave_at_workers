@@ -9,7 +9,12 @@ module ApiClients
     def initialize
       super
       @base_url = ENV['LEAVE_AT_API_URL']
-      @headers = { 'Access-Token' => ENV['LEAVE_AT_ACCESS_TOKEN'] }
+      raise "Set LEAVE_AT_API_URL for REST API in .env" unless @base_url
+
+      token = ENV['LEAVE_AT_ACCESS_TOKEN']
+      raise "Set LEAVE_AT_ACCESS_TOKEN for REST API in .env" unless token
+
+      @headers = { 'Access-Token' => token }
     end
 
     def get resource, id = nil
